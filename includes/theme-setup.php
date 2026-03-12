@@ -60,5 +60,24 @@ function econopapi_enqueue_styles() {
 			ECONOPAPI_THEME_VERSION
 		);
 	}
+
+	if ( is_singular() && ! is_front_page() ) {
+		wp_enqueue_style(
+			'econopapi-singular-style',
+			get_stylesheet_directory_uri() . '/assets/css/singular.css',
+			array( 'econopapi-theme-style' ),
+			ECONOPAPI_THEME_VERSION
+		);
+	}
+
+	if ( is_single() ) {
+		wp_enqueue_script(
+			'econopapi-single-outline',
+			get_stylesheet_directory_uri() . '/assets/js/single-outline.js',
+			array(),
+			ECONOPAPI_THEME_VERSION,
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'econopapi_enqueue_styles', 15 );
