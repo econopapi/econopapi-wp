@@ -1,0 +1,313 @@
+:root {
+	--eco-bg: #f4f4f8;
+	--eco-surface: #ffffff;
+	--eco-text: #1f2230;
+	--eco-text-muted: #676b7e;
+	--eco-border: #e6e7ef;
+	--eco-accent: #5f58d8;
+	--eco-accent-soft: #ebe9ff;
+	--eco-grid: rgba(31, 34, 48, 0.06);
+	--eco-hero-orb: rgba(95, 88, 216, 0.09);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--eco-bg: #090b14;
+		--eco-surface: #0b0d17;
+		--eco-text: #e8ebf7;
+		--eco-text-muted: #9ea5bf;
+		--eco-border: #1f2437;
+		--eco-accent: #7b70ff;
+		--eco-accent-soft: #251d53;
+		--eco-grid: rgba(232, 235, 247, 0.07);
+		--eco-hero-orb: rgba(123, 112, 255, 0.22);
+	}
+}
+
+body.theme-dark,
+body[data-theme="dark"] {
+	--eco-bg: #090b14;
+	--eco-surface: #0b0d17;
+	--eco-text: #e8ebf7;
+	--eco-text-muted: #9ea5bf;
+	--eco-border: #1f2437;
+	--eco-accent: #7b70ff;
+	--eco-accent-soft: #251d53;
+	--eco-grid: rgba(232, 235, 247, 0.07);
+	--eco-hero-orb: rgba(123, 112, 255, 0.22);
+}
+
+body[data-theme="light"] {
+	--eco-bg: #f4f4f8;
+	--eco-surface: #ffffff;
+	--eco-text: #1f2230;
+	--eco-text-muted: #676b7e;
+	--eco-border: #e6e7ef;
+	--eco-accent: #5f58d8;
+	--eco-accent-soft: #ebe9ff;
+	--eco-grid: rgba(31, 34, 48, 0.06);
+	--eco-hero-orb: rgba(95, 88, 216, 0.09);
+}
+
+.econopapi-front-page {
+	background: var(--eco-bg);
+	color: var(--eco-text);
+}
+
+.econopapi-front-page .eco-container,
+.wp-block-econopapi-hero .eco-container {
+	width: min(1080px, calc(100% - 2rem));
+	margin-inline: auto;
+}
+
+.econopapi-front-page .eco-section-title {
+	margin: 0;
+	font-size: 0.9rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--eco-text-muted);
+}
+
+.wp-block-econopapi-hero .eco-hero {
+	position: relative;
+	overflow: hidden;
+	border-top: 1px solid var(--eco-border);
+	border-bottom: 1px solid var(--eco-border);
+	padding: 3.75rem 0 3.25rem;
+	background-color: var(--eco-bg);
+	background-image:
+		linear-gradient(var(--eco-grid) 1px, transparent 1px),
+		linear-gradient(90deg, var(--eco-grid) 1px, transparent 1px);
+	background-size: 40px 40px;
+}
+
+.wp-block-econopapi-hero .eco-hero::before,
+.wp-block-econopapi-hero .eco-hero::after {
+	content: "";
+	position: absolute;
+	border-radius: 999px;
+	background: var(--eco-hero-orb);
+	z-index: 0;
+}
+
+.wp-block-econopapi-hero .eco-hero::before {
+	top: -2.5rem;
+	right: 3%;
+	width: 220px;
+	height: 220px;
+}
+
+.wp-block-econopapi-hero .eco-hero::after {
+	bottom: -3.25rem;
+	left: 28%;
+	width: 180px;
+	height: 180px;
+}
+
+.wp-block-econopapi-hero .eco-hero-content {
+	position: relative;
+	z-index: 1;
+	max-width: 780px;
+}
+
+.wp-block-econopapi-hero .eco-hero-tagline {
+	margin: 0;
+	font-size: 0.94rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--eco-accent);
+}
+
+.wp-block-econopapi-hero .eco-hero-title {
+	margin: 0.9rem 0 1.2rem;
+	line-height: 1.12;
+	font-size: clamp(2.1rem, 4vw, 4rem);
+	font-weight: 700;
+	color: var(--eco-text);
+}
+
+.wp-block-econopapi-hero .eco-hero-description {
+	margin: 0;
+	max-width: 650px;
+	line-height: 1.45;
+	font-size: clamp(1.08rem, 2.1vw, 1.9rem);
+	color: var(--eco-text-muted);
+}
+
+.wp-block-econopapi-hero .eco-hero-actions {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+	margin-top: 2.05rem;
+}
+
+.wp-block-econopapi-hero .eco-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0.72rem 1.35rem;
+	font-size: 1rem;
+	font-weight: 600;
+	text-decoration: none;
+	border-radius: 0.72rem;
+	border: 1px solid var(--eco-border);
+	transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.wp-block-econopapi-hero .eco-btn-primary {
+	background: var(--eco-accent);
+	border-color: var(--eco-accent);
+	color: #f7f8ff;
+}
+
+.wp-block-econopapi-hero .eco-btn-primary:hover,
+.wp-block-econopapi-hero .eco-btn-primary:focus-visible {
+	background: #6a62ee;
+	color: #ffffff;
+}
+
+.wp-block-econopapi-hero .eco-btn-secondary {
+	background: transparent;
+	color: var(--eco-text);
+}
+
+.wp-block-econopapi-hero .eco-btn-secondary:hover,
+.wp-block-econopapi-hero .eco-btn-secondary:focus-visible {
+	background: rgba(95, 88, 216, 0.08);
+}
+
+.econopapi-front-page .eco-stack,
+.econopapi-front-page .eco-latest-posts {
+	padding: 1.55rem 0;
+	border-bottom: 1px solid var(--eco-border);
+	background: var(--eco-surface);
+}
+
+.econopapi-front-page .eco-pill-list {
+	display: flex;
+	gap: 0.7rem;
+	flex-wrap: wrap;
+	margin: 1rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.econopapi-front-page .eco-pill {
+	padding: 0.35rem 0.9rem;
+	border-radius: 999px;
+	border: 1px solid var(--eco-border);
+	font-size: 0.96rem;
+	font-weight: 500;
+	color: var(--eco-text-muted);
+	background: color-mix(in srgb, var(--eco-surface) 84%, var(--eco-bg));
+}
+
+.econopapi-front-page .eco-post-list {
+	margin: 1.1rem 0 0;
+	padding: 0;
+	list-style: none;
+	border-top: 1px solid var(--eco-border);
+}
+
+.econopapi-front-page .eco-post-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 1.1rem 0;
+	border-bottom: 1px solid var(--eco-border);
+}
+
+.econopapi-front-page .eco-post-main {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	min-width: 0;
+}
+
+.econopapi-front-page .eco-post-title {
+	margin: 0;
+	font-size: 1.16rem;
+	font-weight: 600;
+	line-height: 1.28;
+}
+
+.econopapi-front-page .eco-post-title a {
+	color: var(--eco-text);
+	text-decoration: none;
+}
+
+.econopapi-front-page .eco-post-title a:hover,
+.econopapi-front-page .eco-post-title a:focus-visible {
+	color: var(--eco-accent);
+}
+
+.econopapi-front-page .eco-post-category {
+	display: inline-block;
+	padding: 0.2rem 0.68rem;
+	font-size: 0.84rem;
+	font-weight: 600;
+	border-radius: 999px;
+	text-decoration: none;
+	background: var(--eco-accent-soft);
+	color: var(--eco-accent);
+	white-space: nowrap;
+}
+
+.econopapi-front-page .eco-post-date {
+	flex-shrink: 0;
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: var(--eco-text-muted);
+}
+
+.econopapi-front-page .eco-empty-state {
+	margin: 1rem 0 0;
+	color: var(--eco-text-muted);
+}
+
+@media (max-width: 900px) {
+	.wp-block-econopapi-hero .eco-hero {
+		padding: 2.6rem 0;
+	}
+
+	.wp-block-econopapi-hero .eco-hero::before {
+		width: 160px;
+		height: 160px;
+		right: -30px;
+	}
+
+	.wp-block-econopapi-hero .eco-hero::after {
+		width: 130px;
+		height: 130px;
+		left: 60%;
+	}
+
+	.econopapi-front-page .eco-post-main {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.55rem;
+	}
+}
+
+@media (max-width: 640px) {
+	.econopapi-front-page .eco-container,
+	.wp-block-econopapi-hero .eco-container {
+		width: calc(100% - 1.2rem);
+	}
+
+	.wp-block-econopapi-hero .eco-hero-title {
+		font-size: clamp(1.9rem, 8.5vw, 3rem);
+	}
+
+	.wp-block-econopapi-hero .eco-hero-description {
+		font-size: 1.35rem;
+	}
+
+	.econopapi-front-page .eco-post-item {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+}

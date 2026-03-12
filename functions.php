@@ -1,25 +1,20 @@
 <?php
 /**
- * Econopapi WP Theme functions and definitions
+ * Econopapi theme bootstrap file.
  *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ * Mantiene únicamente el punto de entrada y carga modular de funcionalidades.
  *
- * @package Econopapi WP
- * @since 1.0.0
+ * @package EconopapiWP
  */
 
-/**
- * Define Constants
- */
-define( 'CHILD_THEME_ECONOPAPI_WP_VERSION', '1.0.0' );
-
-/**
- * Enqueue styles
- */
-function child_enqueue_styles() {
-
-	wp_enqueue_style( 'econopapi-wp-theme-css', get_stylesheet_directory_uri() . '/style.css', array('astra-theme-css'), CHILD_THEME_ECONOPAPI_WP_VERSION, 'all' );
-
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
-add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
+if ( ! defined( 'ECONOPAPI_THEME_VERSION' ) ) {
+	define( 'ECONOPAPI_THEME_VERSION', '1.1.0' );
+}
+
+require_once get_stylesheet_directory() . '/includes/theme-setup.php';
+require_once get_stylesheet_directory() . '/includes/blocks.php';
+require_once get_stylesheet_directory() . '/includes/theme-toggle.php';

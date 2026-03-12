@@ -1,0 +1,67 @@
+.econopapi-theme-toggle-item {
+	display: flex;
+	align-items: center;
+}
+
+.econopapi-theme-toggle-item .eco-theme-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	padding: 0.42rem 0.75rem;
+	border: 1px solid rgba(108, 116, 143, 0.3);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.86);
+	color: #2a2f3e;
+	font-size: 0.92rem;
+	font-weight: 600;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.econopapi-theme-toggle-item .eco-theme-toggle:focus-visible {
+	outline: 2px solid #7b70ff;
+	outline-offset: 2px;
+}
+
+.econopapi-theme-toggle__track {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	width: 34px;
+	height: 18px;
+	border-radius: 999px;
+	background: rgba(99, 87, 201, 0.18);
+}
+
+.econopapi-theme-toggle__thumb {
+	position: absolute;
+	left: 2px;
+	width: 14px;
+	height: 14px;
+	border-radius: 999px;
+	background: #5f58d8;
+	transition: transform 0.2s ease;
+}
+
+.econopapi-theme-toggle-item .eco-theme-toggle.is-dark .eco-theme-toggle__thumb {
+	transform: translateX(16px);
+}
+
+.econopapi-theme-toggle-item .eco-theme-toggle.is-dark {
+	background: rgba(15, 18, 30, 0.92);
+	border-color: rgba(123, 112, 255, 0.45);
+	color: #e8ebf7;
+}
+
+body.theme-dark .econopapi-theme-toggle-item .eco-theme-toggle,
+body[data-theme="dark"] .econopapi-theme-toggle-item .eco-theme-toggle {
+	background: rgba(15, 18, 30, 0.92);
+	border-color: rgba(123, 112, 255, 0.45);
+	color: #e8ebf7;
+}
+
+@media (max-width: 921px) {
+	.econopapi-theme-toggle-item .eco-theme-toggle {
+		padding: 0.55rem 0.8rem;
+	}
+}
