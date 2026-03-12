@@ -38,11 +38,6 @@
 			button.setAttribute( 'aria-label', nextThemeLabel );
 			button.setAttribute( 'title', nextThemeLabel );
 			button.classList.toggle( 'is-dark', isDark );
-
-			var textNode = button.querySelector( '.eco-theme-toggle__text' );
-			if ( textNode ) {
-				textNode.textContent = nextThemeLabel;
-			}
 		} );
 	}
 

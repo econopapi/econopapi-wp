@@ -37,6 +37,21 @@ function econopapi_enqueue_styles() {
 		ECONOPAPI_THEME_VERSION
 	);
 
+	wp_enqueue_style(
+		'econopapi-header-style',
+		get_stylesheet_directory_uri() . '/assets/css/header.css',
+		array( 'econopapi-theme-style' ),
+		ECONOPAPI_THEME_VERSION
+	);
+
+	wp_enqueue_script(
+		'econopapi-header-menu',
+		get_stylesheet_directory_uri() . '/assets/js/header-menu.js',
+		array(),
+		ECONOPAPI_THEME_VERSION,
+		true
+	);
+
 	if ( is_front_page() ) {
 		wp_enqueue_style(
 			'econopapi-front-page-style',

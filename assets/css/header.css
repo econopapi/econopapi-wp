@@ -1,0 +1,313 @@
+.eco-site-header {
+	position: sticky;
+	top: 0;
+	z-index: 40;
+	border-bottom: 1px solid var(--eco-border, #e6e7ef);
+	background: color-mix(in srgb, var(--eco-surface, #fff) 92%, transparent);
+	backdrop-filter: blur(8px);
+    padding: 1rem 2.5rem;
+}
+
+.econopapi-front-page .eco-site-header {
+	background: color-mix(in srgb, var(--eco-bg, #f4f4f8) 92%, transparent);
+}
+
+.eco-site-header__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.9rem 0;
+}
+
+.eco-brand__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 1.5rem;
+	text-decoration: none;
+	color: inherit;
+}
+
+.eco-brand__logo {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 34px;
+	flex-shrink: 0;
+}
+
+.eco-logo {
+	display: block;
+	max-width: 36px;
+	max-height: 36px;
+	width: auto;
+	height: auto;
+}
+
+.eco-logo--dark {
+	display: none;
+}
+
+body.theme-dark .eco-logo--dark,
+body[data-theme="dark"] .eco-logo--dark {
+	display: block;
+}
+
+body.theme-dark .eco-logo--light,
+body[data-theme="dark"] .eco-logo--light {
+	display: none;
+}
+
+.eco-brand__meta {
+	display: inline-flex;
+	flex-direction: column;
+	line-height: 1.1;
+}
+
+.eco-brand__name {
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: var(--eco-text, #1f2230);
+}
+
+.eco-brand__handle {
+	margin-top: 0.12rem;
+	font-size: 0.88rem;
+	font-weight: 600;
+	color: var(--eco-accent, #5f58d8);
+    letter-spacing: 0.05em;
+}
+
+.eco-main-nav {
+	display: inline-flex;
+	align-items: center;
+	gap: 1rem;
+	min-width: 0;
+	position: relative;
+}
+
+.eco-main-nav__panel {
+	display: block;
+}
+
+.eco-main-nav__controls {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+}
+
+.eco-menu-toggle {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 2.6rem;
+	height: 2.6rem;
+	padding: 0;
+	border: 1px solid rgba(108, 116, 143, 0.3);
+	border-radius: 0.6rem;
+	background: rgba(255, 255, 255, 0.86);
+	color: var(--eco-text, #1f2230);
+	cursor: pointer;
+}
+
+body.theme-dark .eco-menu-toggle,
+body[data-theme="dark"] .eco-menu-toggle {
+	background: rgba(15, 18, 30, 0.92);
+	border-color: rgba(123, 112, 255, 0.45);
+	color: #e8ebf7;
+}
+
+.eco-menu-toggle:focus-visible {
+	outline: 2px solid #7b70ff;
+	outline-offset: 2px;
+}
+
+.eco-menu-toggle__icon {
+	position: relative;
+	width: 1.1rem;
+	height: 2px;
+	background: currentColor;
+	border-radius: 999px;
+	transition: background-color 0.2s ease;
+}
+
+.eco-menu-toggle__icon::before,
+.eco-menu-toggle__icon::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 1.1rem;
+	height: 2px;
+	border-radius: 999px;
+	background: currentColor;
+	transition: transform 0.2s ease, top 0.2s ease;
+}
+
+.eco-menu-toggle__icon::before {
+	top: -0.36rem;
+}
+
+.eco-menu-toggle__icon::after {
+	top: 0.36rem;
+}
+
+.eco-main-nav.is-open .eco-menu-toggle__icon {
+	background: transparent;
+}
+
+.eco-main-nav.is-open .eco-menu-toggle__icon::before {
+	top: 0;
+	transform: rotate(45deg);
+}
+
+.eco-main-nav.is-open .eco-menu-toggle__icon::after {
+	top: 0;
+	transform: rotate(-45deg);
+}
+
+body.theme-dark .eco-main-nav__panel .eco-nav-list > li > a,
+body[data-theme="dark"] .eco-main-nav__panel .eco-nav-list > li > a {
+	color: #dbe1f6;
+}
+
+body.theme-dark .eco-main-nav__panel .eco-nav-list > li > a:hover,
+body.theme-dark .eco-main-nav__panel .eco-nav-list > li.current-menu-item > a,
+body[data-theme="dark"] .eco-main-nav__panel .eco-nav-list > li > a:hover,
+body[data-theme="dark"] .eco-main-nav__panel .eco-nav-list > li.current-menu-item > a {
+	background: rgba(123, 112, 255, 0.12);
+	color: #ffffff;
+}
+
+.eco-nav-list {
+	display: inline-flex;
+	align-items: center;
+	gap: 1.35rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	min-width: 0;
+}
+
+.eco-nav-list > li > a {
+	font-size: 1rem;
+	font-weight: 600;
+	text-decoration: none;
+	color: var(--eco-text-muted, #676b7e);
+}
+
+.eco-nav-list > li > a:hover,
+.eco-nav-list > li > a:focus-visible,
+.eco-nav-list > li.current-menu-item > a {
+	color: var(--eco-text, #1f2230);
+}
+
+.eco-nav-list > li:last-child > a {
+	padding: 0.44rem 0.8rem;
+	border-radius: 0.55rem;
+	background: var(--eco-accent, #5f58d8);
+	color: #f7f8ff;
+}
+
+.eco-nav-list > li:last-child > a:hover,
+.eco-nav-list > li:last-child > a:focus-visible {
+	color: #ffffff;
+	background: #6a62ee;
+}
+
+.eco-logo-placeholder {
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	border: 2px solid currentColor;
+	transform: rotate(45deg);
+	border-radius: 0.2rem;
+	opacity: 0.72;
+}
+
+@media (max-width: 921px) {
+	.eco-site-header {
+		padding: 0;
+	}
+
+	.eco-site-header__inner {
+		flex-wrap: nowrap;
+		padding: 0.7rem 0;
+	}
+
+	.eco-main-nav {
+		margin-left: auto;
+	}
+
+	.eco-main-nav__panel {
+		display: none;
+		position: absolute;
+		top: calc(100% + 0.6rem);
+		right: 0;
+		min-width: min(82vw, 320px);
+		padding: 0.75rem;
+		border: 1px solid var(--eco-border, #e6e7ef);
+		border-radius: 0.75rem;
+		background: var(--eco-surface, #ffffff);
+		box-shadow: 0 14px 32px rgba(20, 22, 32, 0.14);
+	}
+
+	body.theme-dark .eco-main-nav__panel,
+	body[data-theme="dark"] .eco-main-nav__panel {
+		background: #0f1322;
+		border-color: #242b43;
+		box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+	}
+
+	.eco-main-nav.is-open .eco-main-nav__panel {
+		display: block;
+	}
+
+	.eco-nav-list {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.2rem;
+		width: 100%;
+	}
+
+	.eco-nav-list > li > a {
+		display: block;
+		width: 100%;
+		padding: 0.6rem 0.75rem;
+		border-radius: 0.5rem;
+		font-size: 0.98rem;
+	}
+
+	.eco-nav-list > li:last-child > a {
+		padding: 0.6rem 0.75rem;
+	}
+
+	.eco-menu-toggle {
+		display: inline-flex;
+	}
+}
+
+@media (max-width: 640px) {
+	.eco-site-header__inner {
+		padding: 0.62rem 0;
+	}
+
+	.eco-brand__name {
+		font-size: 0.98rem;
+	}
+
+	.eco-brand__handle {
+		font-size: 0.82rem;
+	}
+
+	.eco-main-nav {
+		gap: 0.5rem;
+	}
+
+	.eco-main-nav__panel {
+		left: 0;
+		right: auto;
+		width: min(92vw, 360px);
+	}
+}

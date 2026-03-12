@@ -63,6 +63,23 @@ Comportamiento:
 - Si no existe, se usa `prefers-color-scheme` del sistema.
 - Se aplican atributos en `body` (`data-theme="light|dark"`) para que los estilos respondan inmediatamente.
 
+## Override del header
+
+Se implementó override real del header de Astra para respetar maquetado/comportamiento de los mocks:
+
+- `includes/header-override.php`: reemplaza el markup del header de Astra.
+- `template-parts/header/site-header.php`: header personalizado (logo, nombre, handle, navegación y toggle).
+- `assets/css/header.css`: estilos del header.
+
+## Logo y modo oscuro
+
+Para que el logo reaccione correctamente a cambios de fondo en dark mode, el tema ahora soporta dos variantes:
+
+- `Apariencia > Personalizar > Identidad del sitio > Logo`: logo normal (light/default).
+- `Apariencia > Personalizar > Identidad del sitio > Logo para modo oscuro`: logo alternativo para fondo oscuro.
+
+Si defines ambos, el header cambia automáticamente entre variantes según `data-theme` (`light|dark`).
+
 ## Nota para siguientes iteraciones
 
 - Si se desea toggle manual de tema (switch claro/oscuro), se puede agregar en una siguiente etapa con almacenamiento de preferencia en `localStorage` y sincronización de clase en `body`.

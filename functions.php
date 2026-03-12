@@ -18,3 +18,5 @@ if ( ! defined( 'ECONOPAPI_THEME_VERSION' ) ) {
 require_once get_stylesheet_directory() . '/includes/theme-setup.php';
 require_once get_stylesheet_directory() . '/includes/blocks.php';
 require_once get_stylesheet_directory() . '/includes/theme-toggle.php';
+require_once get_stylesheet_directory() . '/includes/header-override.php';
+require_once get_stylesheet_directory() . '/includes/customizer.php';
