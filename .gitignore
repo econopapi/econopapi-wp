@@ -5,3 +5,6 @@ Thumbs.db
 # IDEs
 .vscode/
 .idea/
+
+# Prompts
+.github/prompts/*
