@@ -5,7 +5,7 @@
 	border-bottom: 1px solid var(--eco-border, #e6e7ef);
 	background: color-mix(in srgb, var(--eco-surface, #fff) 92%, transparent);
 	backdrop-filter: blur(8px);
-    padding: 1rem 2.5rem;
+	padding: 0;
 }
 
 .econopapi-front-page .eco-site-header {
@@ -23,24 +23,29 @@
 .eco-brand__link {
 	display: inline-flex;
 	align-items: center;
-	gap: 1.5rem;
+	gap: 0.6rem;
 	text-decoration: none;
 	color: inherit;
+}
+
+.eco-brand {
+	min-width: 0;
+	flex: 1;
 }
 
 .eco-brand__logo {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 34px;
-	height: 34px;
+	width: 38px;
+	height: 38px;
 	flex-shrink: 0;
 }
 
 .eco-logo {
 	display: block;
-	max-width: 36px;
-	max-height: 36px;
+	max-width: 38px;
+	max-height: 38px;
 	width: auto;
 	height: auto;
 }
@@ -66,17 +71,17 @@ body[data-theme="dark"] .eco-logo--light {
 }
 
 .eco-brand__name {
-	font-size: 1.05rem;
+	font-size: 1.08rem;
 	font-weight: 700;
 	color: var(--eco-text, #1f2230);
 }
 
 .eco-brand__handle {
 	margin-top: 0.12rem;
-	font-size: 0.88rem;
+	font-size: 0.9rem;
 	font-weight: 600;
 	color: var(--eco-accent, #5f58d8);
-    letter-spacing: 0.05em;
+	letter-spacing: 0.04em;
 }
 
 .eco-main-nav {
@@ -232,11 +237,13 @@ body[data-theme="dark"] .eco-main-nav__panel .eco-nav-list > li.current-menu-ite
 
 	.eco-site-header__inner {
 		flex-wrap: nowrap;
-		padding: 0.7rem 0;
+		padding: 0.65rem 0;
 	}
 
 	.eco-main-nav {
 		margin-left: auto;
+		position: relative;
+		z-index: 45;
 	}
 
 	.eco-main-nav__panel {
@@ -244,12 +251,16 @@ body[data-theme="dark"] .eco-main-nav__panel .eco-nav-list > li.current-menu-ite
 		position: absolute;
 		top: calc(100% + 0.6rem);
 		right: 0;
-		min-width: min(82vw, 320px);
+		left: auto;
+		width: min(22rem, calc(100vw - 1rem));
+		max-height: min(70vh, 32rem);
+		overflow: auto;
 		padding: 0.75rem;
 		border: 1px solid var(--eco-border, #e6e7ef);
 		border-radius: 0.75rem;
 		background: var(--eco-surface, #ffffff);
 		box-shadow: 0 14px 32px rgba(20, 22, 32, 0.14);
+		z-index: 60;
 	}
 
 	body.theme-dark .eco-main-nav__panel,
@@ -290,11 +301,14 @@ body[data-theme="dark"] .eco-main-nav__panel .eco-nav-list > li.current-menu-ite
 
 @media (max-width: 640px) {
 	.eco-site-header__inner {
-		padding: 0.62rem 0;
+		padding: 0.62rem 0.45rem;
 	}
 
 	.eco-brand__name {
 		font-size: 0.98rem;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.eco-brand__handle {
@@ -306,8 +320,9 @@ body[data-theme="dark"] .eco-main-nav__panel .eco-nav-list > li.current-menu-ite
 	}
 
 	.eco-main-nav__panel {
-		left: 0;
-		right: auto;
-		width: min(92vw, 360px);
+		right: 0;
+		left: auto;
+		width: calc(100vw - 0.9rem);
+		max-width: 22rem;
 	}
 }
