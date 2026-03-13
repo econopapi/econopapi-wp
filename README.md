@@ -121,6 +121,31 @@ Meta fields opcionales para el post:
 
 `assets/js/singular-reading-bar.js` se carga en `is_singular()` (excepto front page) para la barra sticky de título + progreso de lectura.
 
+## Blog Archive (listado de publicaciones)
+
+Se agregó una plantilla dedicada para el archivo de blog, siguiendo el diseño de referencia con encabezado editorial, chips de filtro por categoría, grid de tarjetas y paginación tipo "Cargar más publicaciones".
+
+### Estructura agregada
+
+- `home.php`: template principal para índice de publicaciones (`is_home`).
+- `template-parts/blog/content-blog.php`: markup del archive (hero, filtros, listado y paginación).
+- `includes/blog-archive.php`: helpers de URL/filtro y carga condicional de assets.
+- `assets/css/blog-archive.css`: estilos responsivos del archive con soporte light/dark.
+
+### Comportamiento
+
+- Se muestra el heading "Blog / Publicaciones" con descripción.
+- Filtros por categorías con estado activo y opción "Todos".
+- Grid de posts en 3 columnas (2 en tablet, 1 en mobile).
+- Cada card incluye categoría principal, título, extracto y meta de fecha + lectura estimada.
+- Botón "Cargar más publicaciones" enlaza a la siguiente página del loop principal cuando existe.
+
+### Carga incremental por AJAX
+
+- El botón "Cargar más publicaciones" ahora usa AJAX para agregar más cards sin recargar la página.
+- Se mantiene fallback por enlace normal para escenarios sin JavaScript o ante error de red.
+- Endpoint implementado con nonce y sanitización en `admin-ajax.php`.
+
 ## Nota para siguientes iteraciones
 
 - Si se desea toggle manual de tema (switch claro/oscuro), se puede agregar en una siguiente etapa con almacenamiento de preferencia en `localStorage` y sincronización de clase en `body`.
