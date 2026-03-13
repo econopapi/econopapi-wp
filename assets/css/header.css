@@ -1,15 +1,36 @@
+:root {
+	--eco-header-bg: rgba(255, 255, 255, 0.92);
+	--eco-header-border: #e6e7ef;
+	--eco-header-text: #1f2230;
+	--eco-header-muted: #676b7e;
+	--eco-header-accent: #5f58d8;
+	--eco-header-panel-bg: #ffffff;
+	--eco-header-panel-shadow: 0 14px 32px rgba(20, 22, 32, 0.14);
+}
+
+body.theme-dark,
+body[data-theme="dark"] {
+	--eco-header-bg: rgba(15, 18, 30, 0.92);
+	--eco-header-border: #242b43;
+	--eco-header-text: #e8ebf7;
+	--eco-header-muted: #a5aec8;
+	--eco-header-accent: #7b70ff;
+	--eco-header-panel-bg: #0f1322;
+	--eco-header-panel-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+}
+
 .eco-site-header {
 	position: sticky;
 	top: 0;
 	z-index: 40;
-	border-bottom: 1px solid var(--eco-border, #e6e7ef);
-	background: color-mix(in srgb, var(--eco-surface, #fff) 92%, transparent);
+	border-bottom: 1px solid var(--eco-header-border);
+	background: var(--eco-header-bg);
 	backdrop-filter: blur(8px);
 	padding: 0;
 }
 
 .econopapi-front-page .eco-site-header {
-	background: color-mix(in srgb, var(--eco-bg, #f4f4f8) 92%, transparent);
+	background: var(--eco-header-bg);
 }
 
 .eco-site-header__inner {
@@ -73,14 +94,14 @@ body[data-theme="dark"] .eco-logo--light {
 .eco-brand__name {
 	font-size: 1.08rem;
 	font-weight: 700;
-	color: var(--eco-text, #1f2230);
+	color: var(--eco-header-text);
 }
 
 .eco-brand__handle {
 	margin-top: 0.12rem;
 	font-size: 0.9rem;
 	font-weight: 600;
-	color: var(--eco-accent, #5f58d8);
+	color: var(--eco-header-accent);
 	letter-spacing: 0.04em;
 }
 
@@ -112,7 +133,7 @@ body[data-theme="dark"] .eco-logo--light {
 	border: 1px solid rgba(108, 116, 143, 0.3);
 	border-radius: 0.6rem;
 	background: rgba(255, 255, 255, 0.86);
-	color: var(--eco-text, #1f2230);
+	color: var(--eco-header-text);
 	cursor: pointer;
 }
 
@@ -198,19 +219,19 @@ body[data-theme="dark"] .eco-main-nav__panel .eco-nav-list > li.current-menu-ite
 	font-size: 1rem;
 	font-weight: 600;
 	text-decoration: none;
-	color: var(--eco-text-muted, #676b7e);
+	color: var(--eco-header-muted);
 }
 
 .eco-nav-list > li > a:hover,
 .eco-nav-list > li > a:focus-visible,
 .eco-nav-list > li.current-menu-item > a {
-	color: var(--eco-text, #1f2230);
+	color: var(--eco-header-text);
 }
 
 .eco-nav-list > li:last-child > a {
 	padding: 0.44rem 0.8rem;
 	border-radius: 0.55rem;
-	background: var(--eco-accent, #5f58d8);
+	background: var(--eco-header-accent);
 	color: #f7f8ff;
 }
 
@@ -256,10 +277,10 @@ body[data-theme="dark"] .eco-main-nav__panel .eco-nav-list > li.current-menu-ite
 		max-height: min(70vh, 32rem);
 		overflow: auto;
 		padding: 0.75rem;
-		border: 1px solid var(--eco-border, #e6e7ef);
+		border: 1px solid var(--eco-header-border);
 		border-radius: 0.75rem;
-		background: var(--eco-surface, #ffffff);
-		box-shadow: 0 14px 32px rgba(20, 22, 32, 0.14);
+		background: var(--eco-header-panel-bg);
+		box-shadow: var(--eco-header-panel-shadow);
 		z-index: 60;
 	}
 
