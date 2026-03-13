@@ -99,6 +99,7 @@ Se implementaron plantillas personalizadas para contenido singular con soporte v
 	- Títulos clicables con navegación por ancla.
 	- Resaltado automático del título activo conforme al scroll.
 	- Enlaces opcionales de Repo y Demo por meta fields.
+- Barra sticky de contexto al hacer scroll (título del post) con progreso de lectura como subrayado morado.
 - Sección de "Más publicaciones" al final.
 
 Meta fields opcionales para el post:
@@ -110,12 +111,15 @@ Meta fields opcionales para el post:
 
 - Hero simple con título y extracto (si existe).
 - Contenido en una sola columna para una lectura más limpia.
+- Barra sticky de contexto al hacer scroll (título de la página) con progreso de lectura.
 
 ### Carga de assets
 
 `assets/css/singular.css` se carga automáticamente en `is_singular()` (excepto front page).
 
 `assets/js/single-outline.js` se carga en `is_single()` para scrollspy del sidebar.
+
+`assets/js/singular-reading-bar.js` se carga en `is_singular()` (excepto front page) para la barra sticky de título + progreso de lectura.
 
 ## Nota para siguientes iteraciones
 

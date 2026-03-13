@@ -68,6 +68,14 @@ function econopapi_enqueue_styles() {
 			array( 'econopapi-theme-style' ),
 			ECONOPAPI_THEME_VERSION
 		);
+
+		wp_enqueue_script(
+			'econopapi-singular-reading-bar',
+			get_stylesheet_directory_uri() . '/assets/js/singular-reading-bar.js',
+			array(),
+			ECONOPAPI_THEME_VERSION,
+			true
+		);
 	}
 
 	if ( is_single() ) {

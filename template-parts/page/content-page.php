@@ -21,6 +21,13 @@
 					</div>
 				</header>
 
+				<div class="eco-reading-bar" data-reading-bar>
+					<div class="eco-container eco-reading-bar__inner">
+						<p class="eco-reading-bar__title"><?php the_title(); ?></p>
+					</div>
+					<span class="eco-reading-bar__progress" data-reading-progress></span>
+				</div>
+
 				<div class="eco-page-content eco-container">
 					<?php the_content(); ?>
 				</div>
