@@ -1,0 +1,254 @@
+.wp-block-econopapi-profile-card {
+	--eco-pc-bg: #f6f7fb;
+	--eco-pc-surface: #ffffff;
+	--eco-pc-surface-2: #fafbff;
+	--eco-pc-border: #dde1ef;
+	--eco-pc-text: #1e2130;
+	--eco-pc-muted: #676d82;
+	--eco-pc-accent: #5f58d8;
+	--eco-pc-accent-2: #4ec5ff;
+	--eco-pc-accent-soft: rgba(95, 88, 216, 0.1);
+	--eco-pc-shadow: 0 16px 38px rgba(33, 35, 53, 0.08);
+	--eco-pc-radius: 1.25rem;
+	display: block;
+	max-width: 420px;
+}
+
+@media (prefers-color-scheme: dark) {
+	.wp-block-econopapi-profile-card {
+		--eco-pc-bg: #0b0d17;
+		--eco-pc-surface: #111523;
+		--eco-pc-surface-2: #161b2b;
+		--eco-pc-border: #232940;
+		--eco-pc-text: #e7ebf9;
+		--eco-pc-muted: #9ca4bf;
+		--eco-pc-accent: #857cff;
+		--eco-pc-accent-2: #55d6ff;
+		--eco-pc-accent-soft: rgba(133, 124, 255, 0.16);
+		--eco-pc-shadow: 0 16px 42px rgba(3, 6, 18, 0.44);
+	}
+}
+
+body[data-theme="light"] .wp-block-econopapi-profile-card {
+	--eco-pc-bg: #f6f7fb;
+	--eco-pc-surface: #ffffff;
+	--eco-pc-surface-2: #fafbff;
+	--eco-pc-border: #dde1ef;
+	--eco-pc-text: #1e2130;
+	--eco-pc-muted: #676d82;
+	--eco-pc-accent: #5f58d8;
+	--eco-pc-accent-2: #4ec5ff;
+	--eco-pc-accent-soft: rgba(95, 88, 216, 0.1);
+	--eco-pc-shadow: 0 16px 38px rgba(33, 35, 53, 0.08);
+}
+
+body.theme-dark .wp-block-econopapi-profile-card,
+body[data-theme="dark"] .wp-block-econopapi-profile-card {
+	--eco-pc-bg: #0b0d17;
+	--eco-pc-surface: #111523;
+	--eco-pc-surface-2: #161b2b;
+	--eco-pc-border: #232940;
+	--eco-pc-text: #e7ebf9;
+	--eco-pc-muted: #9ca4bf;
+	--eco-pc-accent: #857cff;
+	--eco-pc-accent-2: #55d6ff;
+	--eco-pc-accent-soft: rgba(133, 124, 255, 0.16);
+	--eco-pc-shadow: 0 16px 42px rgba(3, 6, 18, 0.44);
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 0.82rem;
+	padding: 1.6rem;
+	border-radius: var(--eco-pc-radius);
+	border: 1px solid var(--eco-pc-border);
+	background:
+		radial-gradient(circle at top right, var(--eco-pc-accent-soft), transparent 42%),
+		var(--eco-pc-surface);
+	box-shadow: var(--eco-pc-shadow);
+	color: var(--eco-pc-text);
+	backdrop-filter: blur(0);
+	transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card.is-variant-minimal {
+	background: var(--eco-pc-surface);
+	box-shadow: 0 8px 22px rgba(33, 35, 53, 0.05);
+	border-color: color-mix(in srgb, var(--eco-pc-border) 82%, var(--eco-pc-bg));
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card.is-variant-minimal .eco-profile-card__halo {
+	display: none;
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card.is-variant-gradient {
+	background:
+		radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--eco-pc-accent) 25%, transparent), transparent 44%),
+		radial-gradient(circle at 0% 100%, color-mix(in srgb, var(--eco-pc-accent-2) 20%, transparent), transparent 41%),
+		linear-gradient(160deg, color-mix(in srgb, var(--eco-pc-surface) 88%, var(--eco-pc-surface-2)) 0%, var(--eco-pc-surface) 100%);
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card.is-variant-neon-soft {
+	background:
+		radial-gradient(circle at 85% -5%, color-mix(in srgb, var(--eco-pc-accent) 38%, transparent), transparent 44%),
+		radial-gradient(circle at 10% 108%, color-mix(in srgb, var(--eco-pc-accent-2) 34%, transparent), transparent 46%),
+		var(--eco-pc-surface);
+	box-shadow:
+		0 0 0 1px color-mix(in srgb, var(--eco-pc-accent) 40%, var(--eco-pc-border)),
+		0 18px 42px rgba(33, 35, 53, 0.2),
+		0 0 28px color-mix(in srgb, var(--eco-pc-accent) 21%, transparent);
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card.is-variant-neon-soft .eco-profile-card__avatar-wrap {
+	border-color: color-mix(in srgb, var(--eco-pc-accent) 60%, var(--eco-pc-border));
+	box-shadow: 0 0 0 2px color-mix(in srgb, var(--eco-pc-accent) 16%, transparent);
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card.is-glass {
+	backdrop-filter: blur(14px);
+	background:
+		radial-gradient(circle at top right, rgba(95, 88, 216, 0.15), transparent 42%),
+		color-mix(in srgb, var(--eco-pc-surface) 78%, var(--eco-pc-bg));
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 20px 45px rgba(28, 31, 51, 0.13);
+	border-color: color-mix(in srgb, var(--eco-pc-accent) 34%, var(--eco-pc-border));
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__halo {
+	position: absolute;
+	top: -44px;
+	right: -44px;
+	width: 140px;
+	height: 140px;
+	border-radius: 999px;
+	background: radial-gradient(circle, rgba(95, 88, 216, 0.23) 0%, rgba(95, 88, 216, 0.01) 68%, transparent 100%);
+	pointer-events: none;
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__avatar-wrap {
+	width: 104px;
+	height: 104px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 999px;
+	border: 1px solid color-mix(in srgb, var(--eco-pc-accent) 26%, var(--eco-pc-border));
+	background: color-mix(in srgb, var(--eco-pc-accent) 10%, var(--eco-pc-surface));
+	overflow: hidden;
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__avatar-image {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__avatar-fallback {
+	font-size: 2rem;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	color: var(--eco-pc-accent);
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__name {
+	margin: 0.2rem 0 0;
+	font-size: clamp(1.5rem, 3.5vw, 2rem);
+	line-height: 1.18;
+	font-weight: 700;
+	color: var(--eco-pc-text);
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__username {
+	margin: 0;
+	font-size: 1.06rem;
+	font-weight: 600;
+	line-height: 1.3;
+	color: var(--eco-pc-accent);
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__role {
+	margin: 0.15rem 0 0.22rem;
+	font-size: 1.02rem;
+	line-height: 1.42;
+	color: var(--eco-pc-muted);
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__contact {
+	display: flex;
+	flex-direction: column;
+	gap: 0.38rem;
+	padding: 0.75rem 0 0.15rem;
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__line {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.36;
+	color: var(--eco-pc-muted);
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__line a {
+	color: inherit;
+	text-decoration: none;
+	text-underline-offset: 0.16em;
+	word-break: break-word;
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__line--link a {
+	color: var(--eco-pc-accent);
+	font-weight: 600;
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__line a:hover,
+.wp-block-econopapi-profile-card .eco-profile-card__line a:focus-visible {
+	text-decoration: underline;
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__location {
+	margin-top: 0.32rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--eco-pc-border);
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__location-label {
+	margin: 0;
+	font-size: 0.88rem;
+	font-weight: 700;
+	letter-spacing: 0.11em;
+	text-transform: uppercase;
+	color: var(--eco-pc-muted);
+}
+
+.wp-block-econopapi-profile-card .eco-profile-card__location-value {
+	margin: 0;
+	font-size: 1.02rem;
+	font-weight: 600;
+	line-height: 1.34;
+	color: var(--eco-pc-text);
+}
+
+@media (max-width: 680px) {
+	.wp-block-econopapi-profile-card {
+		max-width: 100%;
+	}
+
+	.wp-block-econopapi-profile-card .eco-profile-card {
+		padding: 1.25rem;
+		gap: 0.72rem;
+	}
+
+	.wp-block-econopapi-profile-card .eco-profile-card__avatar-wrap {
+		width: 90px;
+		height: 90px;
+	}
+}

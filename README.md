@@ -41,6 +41,43 @@ Atributos principales del bloque:
 - Texto/URL de botón primario
 - Texto/URL de botón secundario
 
+### Bloque custom: `econopapi/profile-card`
+
+Se agregó un bloque dinámico para construir una tarjeta de perfil editable desde Gutenberg con enfoque premium, accesible y responsive.
+
+Estructura del bloque:
+
+- `custom-blocks/profile-card/block.json`
+- `custom-blocks/profile-card/index.js`
+- `custom-blocks/profile-card/render.php`
+- `custom-blocks/profile-card/style.css`
+- `custom-blocks/profile-card/editor.css`
+
+Registro:
+
+- El bloque se registra en `includes/blocks.php` junto al bloque Hero.
+
+Campos disponibles en el bloque:
+
+- Nombre
+- Usuario/handle
+- Rol o tagline
+- Variantes visuales seleccionables (`Minimal`, `Gradient`, `Neon Soft`)
+- Avatar por URL + ALT + fallback por iniciales
+- Email (opcional y toggleable)
+- Enlace GitHub (label + URL, opcional y toggleable)
+- Enlace LinkedIn (label + URL, opcional y toggleable)
+- Enlace YouTube (label + URL, opcional y toggleable)
+- Ubicación (label + valor)
+- Toggle para acabado visual tipo glass
+
+Comportamiento:
+
+- Render dinámico en servidor (`render.php`) con sanitización de datos.
+- Soporte de modo claro/oscuro por `prefers-color-scheme`, `body.theme-dark` y `body[data-theme="dark"]`.
+- Diseño responsive para uso en sidebar o columnas estrechas.
+- Los campos de contacto se muestran sólo si su toggle está activo y tienen valor.
+
 ## Modo oscuro
 
 Se implementó mediante variables CSS en `assets/css/front-page.css`:

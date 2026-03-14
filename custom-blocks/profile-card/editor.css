@@ -1,0 +1,14 @@
+.editor-styles-wrapper .wp-block-econopapi-profile-card {
+	border: 1px dashed rgba(125, 96, 255, 0.34);
+	padding: 0.35rem;
+	border-radius: 1.1rem;
+}
+
+.editor-styles-wrapper .wp-block-econopapi-profile-card .eco-profile-card {
+	margin: 0;
+}
+
+.editor-styles-wrapper .wp-block-econopapi-profile-card .eco-profile-card__line--link {
+	text-decoration: underline;
+	text-underline-offset: 0.18em;
+}
