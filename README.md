@@ -146,6 +146,42 @@ Se agregó una plantilla dedicada para el archivo de blog, siguiendo el diseño 
 - Se mantiene fallback por enlace normal para escenarios sin JavaScript o ante error de red.
 - Endpoint implementado con nonce y sanitización en `admin-ajax.php`.
 
+## Proyectos (CPT)
+
+Se agregó un Custom Post Type para la sección de Proyectos, separado del flujo de publicaciones del blog.
+
+### Estructura agregada
+
+- `includes/projects.php`: registro del CPT, metaboxes, helpers de render y carga condicional de assets.
+- `archive-project.php`: plantilla principal para el archivo de proyectos.
+- `template-parts/project/content-project.php`: markup del listado de proyectos.
+- `assets/css/projects-archive.css`: estilos responsivos del archive con soporte light/dark.
+
+### CPT: `project`
+
+- Slug de archivo: `/proyectos`
+- Slug singular: `/proyecto/{slug}`
+- Soportes: título, contenido, extracto, imagen destacada y revisiones.
+- Taxonomía habilitada: tags (`post_tag`) para chips de tecnologías o categorías técnicas.
+
+### Fields de Proyecto (meta)
+
+En cada proyecto se agregó un metabox lateral con:
+
+- `Estatus`: opciones predefinidas (`En vivo`, `En desarrollo`, `Activo`, `Pausado`).
+- `URL del proyecto`: URL principal pública (demo, app o landing).
+
+### Render del archivo
+
+Cada tarjeta del archive muestra:
+
+- Título del proyecto (enlace a URL externa o permalink si no existe URL).
+- Badge de estatus.
+- Extracto como subtítulo breve.
+- Descripción breve derivada del contenido.
+- Chips de tags/técnologías.
+- Link visible con dominio/URL del proyecto.
+
 ## Nota para siguientes iteraciones
 
 - Si se desea toggle manual de tema (switch claro/oscuro), se puede agregar en una siguiente etapa con almacenamiento de preferencia en `localStorage` y sincronización de clase en `body`.
