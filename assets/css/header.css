@@ -38,7 +38,7 @@ body[data-theme="dark"] {
 	align-items: center;
 	justify-content: space-between;
 	gap: 1rem;
-	padding: 0.9rem 0;
+	padding: 0.9rem 1.5em;
 }
 
 .eco-brand__link {
@@ -258,7 +258,7 @@ body[data-theme="dark"] .eco-main-nav__panel .eco-nav-list > li.current-menu-ite
 
 	.eco-site-header__inner {
 		flex-wrap: nowrap;
-		padding: 0.65rem 0;
+		padding: 0.65rem 1.5em;
 	}
 
 	.eco-main-nav {
@@ -322,7 +322,7 @@ body[data-theme="dark"] .eco-main-nav__panel .eco-nav-list > li.current-menu-ite
 
 @media (max-width: 640px) {
 	.eco-site-header__inner {
-		padding: 0.62rem 0.45rem;
+		padding: 0.62rem 1.2rem;
 	}
 
 	.eco-brand__name {
