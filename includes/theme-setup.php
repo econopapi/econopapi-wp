@@ -21,6 +21,14 @@ function econopapi_theme_setup() {
 	add_theme_support( 'editor-styles' );
 
 	add_editor_style( 'assets/css/front-page.css' );
+
+	// Register navigation menus
+	register_nav_menus(
+		array(
+			'primary' => __( 'Menú Principal', 'econopapi-wp' ),
+			'footer'  => __( 'Menú del Footer', 'econopapi-wp' ),
+		)
+	);
 }
 add_action( 'after_setup_theme', 'econopapi_theme_setup' );
 

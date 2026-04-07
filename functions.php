@@ -23,3 +23,4 @@ require_once get_stylesheet_directory() . '/includes/customizer.php';
 require_once get_stylesheet_directory() . '/includes/singular-helpers.php';
 require_once get_stylesheet_directory() . '/includes/blog-archive.php';
 require_once get_stylesheet_directory() . '/includes/projects.php';
+require_once get_stylesheet_directory() . '/includes/footer.php';

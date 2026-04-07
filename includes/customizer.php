@@ -56,5 +56,90 @@ function econopapi_customize_register( $wp_customize ) {
 			)
 		)
 	);
+
+	// Add social links section
+	$wp_customize->add_section(
+		'econopapi_social_links',
+		array(
+			'title'    => __( 'Enlaces Sociales', 'econopapi-wp' ),
+			'priority' => 120,
+		)
+	);
+
+	// Twitter
+	$wp_customize->add_setting(
+		'econopapi_social_twitter',
+		array(
+			'default'           => 'https://twitter.com/econopapi',
+			'sanitize_callback' => 'esc_url_raw',
+			'transport'         => 'refresh',
+		)
+	);
+
+	$wp_customize->add_control(
+		'econopapi_social_twitter',
+		array(
+			'label'       => __( 'URL de Twitter', 'econopapi-wp' ),
+			'section'     => 'econopapi_social_links',
+			'type'        => 'url',
+		)
+	);
+
+	// LinkedIn
+	$wp_customize->add_setting(
+		'econopapi_social_linkedin',
+		array(
+			'default'           => 'https://linkedin.com/in/dlimon2/',
+			'sanitize_callback' => 'esc_url_raw',
+			'transport'         => 'refresh',
+		)
+	);
+
+	$wp_customize->add_control(
+		'econopapi_social_linkedin',
+		array(
+			'label'       => __( 'URL de LinkedIn', 'econopapi-wp' ),
+			'section'     => 'econopapi_social_links',
+			'type'        => 'url',
+		)
+	);
+
+	// GitHub
+	$wp_customize->add_setting(
+		'econopapi_social_github',
+		array(
+			'default'           => 'https://github.com/econopapi',
+			'sanitize_callback' => 'esc_url_raw',
+			'transport'         => 'refresh',
+		)
+	);
+
+	$wp_customize->add_control(
+		'econopapi_social_github',
+		array(
+			'label'       => __( 'URL de GitHub', 'econopapi-wp' ),
+			'section'     => 'econopapi_social_links',
+			'type'        => 'url',
+		)
+	);
+
+	// Instagram
+	$wp_customize->add_setting(
+		'econopapi_social_instagram',
+		array(
+			'default'           => 'https://instagram.com/econopapi',
+			'sanitize_callback' => 'esc_url_raw',
+			'transport'         => 'refresh',
+		)
+	);
+
+	$wp_customize->add_control(
+		'econopapi_social_instagram',
+		array(
+			'label'       => __( 'URL de Instagram', 'econopapi-wp' ),
+			'section'     => 'econopapi_social_links',
+			'type'        => 'url',
+		)
+	);
 }
 add_action( 'customize_register', 'econopapi_customize_register' );

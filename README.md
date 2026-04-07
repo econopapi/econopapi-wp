@@ -98,6 +98,82 @@ Comportamiento:
 
 - Si existe preferencia guardada, se respeta (`light` o `dark`).
 - Si no existe, se usa `prefers-color-scheme` del sistema.
+
+## Footer Personalizado
+
+Se implementó un footer modular y profesional con soporte completo para dark mode.
+
+### Estructura creada
+
+- `footer.php`: Sobrescribe el footer por defecto de Astra
+- `includes/footer.php`: Configuración y setup del footer personalizado
+- `assets/css/footer.css`: Estilos completos con soporte para dark mode
+- `template-parts/footer/footer.php`: Template part principal del footer
+- `template-parts/footer/social-links.php`: Componente de enlaces sociales
+
+### Características del Footer
+
+#### 1. Diseño Modular
+- **Áreas de widgets**: `footer-main` (principal) y `footer-copyright` (copyright)
+- **Menú de navegación**: Ubicación `footer` para enlaces adicionales
+- **Enlaces sociales**: Configurables desde el Customizer (Twitter, LinkedIn, GitHub, Instagram)
+
+#### 2. Soporte para Dark Mode
+- Variables CSS para temas claro/oscuro
+- Compatible con `theme-dark`, `data-theme="dark"` y `prefers-color-scheme: dark`
+- Transiciones suaves entre modos
+
+#### 3. Diseño Responsive
+- Grid layout para widgets en desktop
+- Layout de una columna en tablet/mobile
+- Contenido centrado en dispositivos móviles
+
+#### 4. Accesibilidad
+- ARIA labels para navegación y enlaces sociales
+- Estados focus-visible para navegación por teclado
+- Texto para screen readers en iconos sociales
+- Estructura HTML semántica
+
+### Configuración
+
+#### 1. Enlaces Sociales
+1. Ir a Apariencia → Personalizar → Enlaces Sociales
+2. Ingresar URLs para cada plataforma
+3. Los enlaces aparecerán automáticamente en el footer
+
+#### 2. Widgets
+1. Ir a Apariencia → Widgets
+2. Agregar widgets al área "Footer Principal"
+3. Agregar texto de copyright al área "Footer Copyright"
+
+#### 3. Menú del Footer
+1. Ir a Apariencia → Menus
+2. Crear nuevo menú y asignar a "Menú del Footer"
+3. Agregar enlaces para aparecer en la navegación del footer
+
+### Integración con el Tema
+
+El footer reemplaza automáticamente el footer por defecto de Astra cuando se activa el tema. Se integra con:
+
+- Sistema de dark mode existente
+- Customizer para configuración
+- Widgets de WordPress
+- Menús de navegación
+
+### Estilos y Variables CSS
+
+El footer utiliza un sistema de variables CSS similar al resto del tema:
+
+```css
+--eco-footer-bg: #f8f9fc;           /* Fondo claro */
+--eco-footer-surface: #ffffff;      /* Superficie de widgets */
+--eco-footer-border: #e2e6f0;       /* Bordes */
+--eco-footer-text: #1e2130;         /* Texto principal */
+--eco-footer-muted: #676d82;        /* Texto secundario */
+--eco-footer-accent: #5f58d8;       /* Color de acento */
+```
+
+En modo oscuro, estas variables cambian automáticamente a valores más oscuros con mejor contraste.
 - Se aplican atributos en `body` (`data-theme="light|dark"`) para que los estilos respondan inmediatamente.
 
 ## Override del header
