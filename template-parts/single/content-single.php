@@ -63,9 +63,13 @@
 						'template-parts/single/sidebar',
 						'single',
 						array(
-							'outline'  => $outline,
-							'repo_url' => $repo_url,
-							'demo_url' => $demo_url,
+							'outline'            => $outline,
+							'outline_title'      => __( 'En este post', 'econopapi-wp' ),
+							'sidebar_label'      => __( 'Información del post', 'econopapi-wp' ),
+							'meta_section_title' => __( 'Enlaces', 'econopapi-wp' ),
+							'meta_after_outline' => true,
+							'repo_url'           => $repo_url,
+							'demo_url'           => $demo_url,
 						)
 					);
 					?>

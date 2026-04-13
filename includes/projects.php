@@ -114,6 +114,7 @@ function econopapi_render_project_meta_box( $post ) {
 	$status_options = econopapi_get_project_status_options();
 	$current_status = sanitize_key( (string) get_post_meta( $post->ID, 'econopapi_project_status', true ) );
 	$project_url    = (string) get_post_meta( $post->ID, 'econopapi_project_url', true );
+	$repo_url       = (string) get_post_meta( $post->ID, 'econopapi_project_repo_url', true );
 
 	if ( '' === $current_status || ! isset( $status_options[ $current_status ] ) ) {
 		$current_status = 'en-vivo';
@@ -143,6 +144,19 @@ function econopapi_render_project_meta_box( $post ) {
 			style="width:100%; margin-top:6px;"
 		/>
 		<span class="description"><?php esc_html_e( 'URL pública principal del proyecto (demo, app o landing).', 'econopapi-wp' ); ?></span>
+	</p>
+
+	<p>
+		<label for="econopapi_project_repo_url"><strong><?php esc_html_e( 'URL del repositorio', 'econopapi-wp' ); ?></strong></label>
+		<input
+			type="url"
+			id="econopapi_project_repo_url"
+			name="econopapi_project_repo_url"
+			value="<?php echo esc_attr( $repo_url ); ?>"
+			placeholder="https://github.com/usuario/repositorio"
+			style="width:100%; margin-top:6px;"
+		/>
+		<span class="description"><?php esc_html_e( 'Opcional. Enlace al repositorio de código fuente del proyecto.', 'econopapi-wp' ); ?></span>
 	</p>
 	<?php
 }
@@ -179,6 +193,7 @@ function econopapi_save_project_meta_box( $post_id ) {
 	$status_options = econopapi_get_project_status_options();
 	$status_input   = isset( $_POST['econopapi_project_status'] ) ? sanitize_key( (string) wp_unslash( $_POST['econopapi_project_status'] ) ) : '';
 	$project_url    = isset( $_POST['econopapi_project_url'] ) ? esc_url_raw( (string) wp_unslash( $_POST['econopapi_project_url'] ) ) : '';
+	$repo_url       = isset( $_POST['econopapi_project_repo_url'] ) ? esc_url_raw( (string) wp_unslash( $_POST['econopapi_project_repo_url'] ) ) : '';
 
 	if ( isset( $status_options[ $status_input ] ) ) {
 		update_post_meta( $post_id, 'econopapi_project_status', $status_input );
@@ -189,8 +204,127 @@ function econopapi_save_project_meta_box( $post_id ) {
 	} else {
 		delete_post_meta( $post_id, 'econopapi_project_url' );
 	}
+
+	if ( '' !== $repo_url ) {
+		update_post_meta( $post_id, 'econopapi_project_repo_url', $repo_url );
+	} else {
+		delete_post_meta( $post_id, 'econopapi_project_repo_url' );
+	}
 }
 add_action( 'save_post_project', 'econopapi_save_project_meta_box' );
+
+/**
+ * Returns normalized project meta for a post ID.
+ *
+ * @param int $post_id Project post ID.
+ * @return array<string, string>
+ */
+function econopapi_get_project_meta( $post_id ) {
+	$status = sanitize_key( (string) get_post_meta( $post_id, 'econopapi_project_status', true ) );
+
+	if ( '' === $status ) {
+		$status = 'en-vivo';
+	}
+
+	return array(
+		'status'       => $status,
+		'status_label' => econopapi_get_project_status_label( $status ),
+		'project_url'  => econopapi_get_post_meta_url( $post_id, 'econopapi_project_url' ),
+		'repo_url'     => econopapi_get_post_meta_url( $post_id, 'econopapi_project_repo_url' ),
+	);
+}
+
+/**
+ * Returns a human friendly label for a project URL.
+ *
+ * @param string $url URL to format.
+ * @return string
+ */
+function econopapi_get_project_url_label( $url ) {
+	$url = trim( (string) $url );
+
+	if ( '' === $url ) {
+		return '';
+	}
+
+	$host = wp_parse_url( $url, PHP_URL_HOST );
+	if ( is_string( $host ) && '' !== $host ) {
+		return preg_replace( '/^www\./', '', $host );
+	}
+
+	return $url;
+}
+
+/**
+ * Builds a related posts query using shared tags when available.
+ *
+ * @param int    $post_id          Current project ID.
+ * @param string $related_post_type Post type to query.
+ * @param int    $posts_per_page   Posts to fetch.
+ * @return WP_Query
+ */
+function econopapi_get_related_content_query( $post_id, $related_post_type, $posts_per_page = 2 ) {
+	$tag_ids = wp_get_post_terms(
+		$post_id,
+		'post_tag',
+		array(
+			'fields' => 'ids',
+		)
+	);
+
+	$args = array(
+		'post_type'           => $related_post_type,
+		'posts_per_page'      => $posts_per_page,
+		'post__not_in'        => array( $post_id ),
+		'ignore_sticky_posts' => true,
+		'orderby'             => 'date',
+		'order'               => 'DESC',
+	);
+
+	if ( ! empty( $tag_ids ) ) {
+		$args['tag__in'] = array_map( 'intval', $tag_ids );
+		$args['orderby'] = 'date';
+	}
+
+	$query = new WP_Query( $args );
+
+	if ( $query->have_posts() || empty( $tag_ids ) ) {
+		return $query;
+	}
+
+	return new WP_Query(
+		array(
+			'post_type'           => $related_post_type,
+			'posts_per_page'      => $posts_per_page,
+			'post__not_in'        => array( $post_id ),
+			'ignore_sticky_posts' => true,
+			'orderby'             => 'date',
+			'order'               => 'DESC',
+		)
+	);
+}
+
+/**
+ * Returns a list of related blog posts for a project.
+ *
+ * @param int $post_id Current project ID.
+ * @param int $posts_per_page Posts to fetch.
+ * @return WP_Query
+ */
+function econopapi_get_related_blog_posts( $post_id, $posts_per_page = 2 ) {
+	return econopapi_get_related_content_query( $post_id, 'post', $posts_per_page );
+}
+
+/**
+ * Returns a list of related projects.
+ *
+ * @param int $post_id Current project ID.
+ * @param int $posts_per_page Posts to fetch.
+ * @return WP_Query
+ */
+function econopapi_get_related_projects( $post_id, $posts_per_page = 2 ) {
+	return econopapi_get_related_content_query( $post_id, 'project', $posts_per_page );
+}
 
 /**
  * Renders a project card for archive loops.
@@ -198,19 +332,14 @@ add_action( 'save_post_project', 'econopapi_save_project_meta_box' );
  * @return string
  */
 function econopapi_render_project_archive_card() {
-	$project_id       = (int) get_the_ID();
+	$project_id        = (int) get_the_ID();
 	$project_permalink = get_permalink( $project_id );
-	$project_status   = sanitize_key( (string) get_post_meta( $project_id, 'econopapi_project_status', true ) );
-	$project_url_meta = (string) get_post_meta( $project_id, 'econopapi_project_url', true );
-	$project_url      = '' !== $project_url_meta ? $project_url_meta : get_permalink();
-	$url_host         = wp_parse_url( $project_url, PHP_URL_HOST );
+	$project_meta      = econopapi_get_project_meta( $project_id );
+	$project_status    = $project_meta['status'];
+	$project_url       = '' !== $project_meta['project_url'] ? $project_meta['project_url'] : get_permalink();
 	$excerpt          = trim( (string) get_the_excerpt() );
 	$description      = trim( (string) wp_strip_all_tags( get_the_content() ) );
 	$tags             = get_the_terms( $project_id, 'post_tag' );
-
-	if ( '' === $project_status ) {
-		$project_status = 'en-vivo';
-	}
 
 	if ( ! is_array( $tags ) ) {
 		$tags = array();
@@ -255,7 +384,7 @@ function econopapi_render_project_archive_card() {
 
 			<p class="eco-project-card__links">
 				<a href="<?php echo esc_url( $project_url ); ?>"<?php echo $is_external ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
-					<?php echo esc_html( $url_host ? $url_host : $project_url ); ?>
+					<?php echo esc_html( econopapi_get_project_url_label( $project_url ) ); ?>
 				</a>
 			</p>
 		</div>

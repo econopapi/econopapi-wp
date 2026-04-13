@@ -62,7 +62,7 @@ function econopapi_get_single_outline( $post_id ) {
  * @return string
  */
 function econopapi_single_content_add_heading_ids( $content ) {
-	if ( ! is_singular( 'post' ) || ! in_the_loop() || ! is_main_query() ) {
+	if ( ! is_singular( array( 'post', 'project' ) ) || ! in_the_loop() || ! is_main_query() ) {
 		return $content;
 	}
 

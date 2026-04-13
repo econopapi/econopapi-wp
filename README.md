@@ -268,6 +268,8 @@ Se agregó un Custom Post Type para la sección de Proyectos, separado del flujo
 - `includes/projects.php`: registro del CPT, metaboxes, helpers de render y carga condicional de assets.
 - `archive-project.php`: plantilla principal para el archivo de proyectos.
 - `template-parts/project/content-project.php`: markup del listado de proyectos.
+- `single-project.php`: plantilla singular dedicada para el CPT `project`.
+- `template-parts/project/content-single-project.php`: layout singular de proyectos con sidebar y relacionados propios.
 - `assets/css/projects-archive.css`: estilos responsivos del archive con soporte light/dark.
 
 ### CPT: `project`
@@ -283,6 +285,7 @@ En cada proyecto se agregó un metabox lateral con:
 
 - `Estatus`: opciones predefinidas (`En vivo`, `En desarrollo`, `Activo`, `Pausado`).
 - `URL del proyecto`: URL principal pública (demo, app o landing).
+- `URL del repositorio`: opcional, pensada para enlazar el código fuente (por ejemplo, GitHub).
 
 ### Render del archivo
 
@@ -294,6 +297,29 @@ Cada tarjeta del archive muestra:
 - Descripción breve derivada del contenido.
 - Chips de tags/técnologías.
 - Link visible con dominio/URL del proyecto.
+
+## Single Project
+
+Los proyectos ya no reutilizan el mismo flujo visual de `single post`; ahora cuentan con una experiencia singular propia.
+
+### Comportamiento
+
+- Hero con estatus, fecha y tiempo estimado de lectura.
+- Acciones rápidas para abrir el proyecto y, si existe, su repositorio.
+- Sidebar contextual en desktop con:
+	- Ficha del proyecto (`Estatus`, `URL del proyecto`, `URL del repositorio` si existe).
+	- Índice interactivo de headings H2 del contenido, igual que en posts normales.
+- Sección final de relacionados dividida en dos columnas:
+	- `Más publicaciones`
+	- `Otros proyectos`
+
+### Helpers reutilizables
+
+En `includes/projects.php` se agregaron helpers para:
+
+- Normalizar metadatos del proyecto.
+- Formatear hosts/labels de URLs.
+- Obtener queries de contenido relacionado para posts y proyectos.
 
 ## Nota para siguientes iteraciones
 
