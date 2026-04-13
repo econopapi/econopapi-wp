@@ -58,14 +58,33 @@ if ( empty( $outline ) && empty( $meta_items ) ) {
 						$url      = isset( $item['url'] ) ? (string) $item['url'] : '';
 						$external = ! empty( $item['external'] );
 						$type     = isset( $item['type'] ) ? (string) $item['type'] : '';
+						$layout   = isset( $item['layout'] ) ? (string) $item['layout'] : '';
+						$icon     = isset( $item['icon'] ) ? (string) $item['icon'] : '';
 						?>
 						<?php if ( '' !== $label && '' !== $value ) : ?>
-							<li class="eco-side-meta-item">
-								<span class="eco-side-subtitle"><?php echo esc_html( $label ); ?></span>
-								<?php if ( '' !== $url ) : ?>
-									<a class="eco-side-meta-link<?php echo 'badge' === $type ? ' eco-side-meta-link--badge' : ''; ?>" href="<?php echo esc_url( $url ); ?>"<?php echo $external ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>><?php echo esc_html( $value ); ?></a>
+							<li class="eco-side-meta-item<?php echo 'inline' === $layout ? ' eco-side-meta-item--inline' : ''; ?>">
+								<?php if ( 'inline' === $layout ) : ?>
+									<div class="eco-side-meta-row">
+										<span class="eco-side-subtitle"><?php echo esc_html( $label ); ?></span>
+										<span class="eco-side-meta-value<?php echo 'badge' === $type ? ' eco-side-meta-value--badge' : ''; ?>"><?php echo esc_html( $value ); ?></span>
+									</div>
 								<?php else : ?>
-									<span class="eco-side-meta-value<?php echo 'badge' === $type ? ' eco-side-meta-value--badge' : ''; ?>"><?php echo esc_html( $value ); ?></span>
+									<span class="eco-side-subtitle"><?php echo esc_html( $label ); ?></span>
+									<?php if ( '' !== $url ) : ?>
+										<a class="eco-side-meta-link<?php echo 'badge' === $type ? ' eco-side-meta-link--badge' : ''; ?>" href="<?php echo esc_url( $url ); ?>"<?php echo $external ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>
+											<?php if ( '' !== $icon ) : ?>
+												<span class="eco-side-meta-icon" aria-hidden="true"><?php echo econopapi_get_project_meta_icon_svg( $icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+											<?php endif; ?>
+											<span><?php echo esc_html( $value ); ?></span>
+										</a>
+									<?php else : ?>
+										<span class="eco-side-meta-value<?php echo 'badge' === $type ? ' eco-side-meta-value--badge' : ''; ?>">
+											<?php if ( '' !== $icon ) : ?>
+												<span class="eco-side-meta-icon" aria-hidden="true"><?php echo econopapi_get_project_meta_icon_svg( $icon ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+											<?php endif; ?>
+											<span><?php echo esc_html( $value ); ?></span>
+										</span>
+									<?php endif; ?>
 								<?php endif; ?>
 							</li>
 						<?php endif; ?>

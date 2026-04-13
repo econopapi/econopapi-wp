@@ -16,22 +16,24 @@
 			$project_url     = $project_meta['project_url'];
 			$repo_url        = $project_meta['repo_url'];
 			$status_label    = $project_meta['status_label'];
-			$project_host    = econopapi_get_project_url_label( $project_url );
-			$repo_host       = econopapi_get_project_url_label( $repo_url );
+			$project_link    = econopapi_get_project_link_display_data( $project_url, 'project' );
+			$repo_link       = econopapi_get_project_link_display_data( $repo_url, 'repo' );
 			$project_outline = array();
 			$meta_items      = array(
 				array(
-					'label' => __( 'Estatus', 'econopapi-wp' ),
-					'value' => $status_label,
-					'type'  => 'badge',
+					'label'  => __( 'Estatus', 'econopapi-wp' ),
+					'value'  => $status_label,
+					'type'   => 'badge',
+					'layout' => 'inline',
 				),
 			);
 
 			if ( '' !== $project_url ) {
 				$meta_items[] = array(
 					'label'    => __( 'Proyecto', 'econopapi-wp' ),
-					'value'    => $project_host,
+					'value'    => $project_link['label'],
 					'url'      => $project_url,
+					'icon'     => $project_link['icon'],
 					'external' => true,
 				);
 			}
@@ -39,8 +41,9 @@
 			if ( '' !== $repo_url ) {
 				$meta_items[] = array(
 					'label'    => __( 'Repositorio', 'econopapi-wp' ),
-					'value'    => $repo_host,
+					'value'    => $repo_link['label'],
 					'url'      => $repo_url,
+					'icon'     => $repo_link['icon'],
 					'external' => true,
 				);
 			}
@@ -77,7 +80,24 @@
 
 				<div class="eco-reading-bar" data-reading-bar>
 					<div class="eco-container eco-reading-bar__inner">
-						<p class="eco-reading-bar__title"><?php the_title(); ?></p>
+						<div class="eco-reading-bar__content eco-reading-bar__content--project">
+							<p class="eco-reading-bar__title"><?php the_title(); ?></p>
+							<div class="eco-reading-bar__project-meta" aria-label="<?php esc_attr_e( 'Resumen del proyecto', 'econopapi-wp' ); ?>">
+								<span class="eco-reading-bar__project-status"><?php echo esc_html( $status_label ); ?></span>
+								<?php if ( '' !== $project_url ) : ?>
+									<a class="eco-reading-bar__project-link" href="<?php echo esc_url( $project_url ); ?>" target="_blank" rel="noopener noreferrer">
+										<span class="eco-reading-bar__project-link-icon" aria-hidden="true"><?php echo econopapi_get_project_meta_icon_svg( $project_link['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+										<span><?php echo esc_html( $project_link['label'] ); ?></span>
+									</a>
+								<?php endif; ?>
+								<?php if ( '' !== $repo_url ) : ?>
+									<a class="eco-reading-bar__project-link" href="<?php echo esc_url( $repo_url ); ?>" target="_blank" rel="noopener noreferrer">
+										<span class="eco-reading-bar__project-link-icon" aria-hidden="true"><?php echo econopapi_get_project_meta_icon_svg( $repo_link['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+										<span><?php echo esc_html( $repo_link['label'] ); ?></span>
+									</a>
+								<?php endif; ?>
+							</div>
+						</div>
 					</div>
 					<span class="eco-reading-bar__progress" data-reading-progress></span>
 				</div>

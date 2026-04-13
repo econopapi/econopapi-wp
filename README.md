@@ -309,6 +309,12 @@ Los proyectos ya no reutilizan el mismo flujo visual de `single post`; ahora cue
 - Sidebar contextual en desktop con:
 	- Ficha del proyecto (`Estatus`, `URL del proyecto`, `URL del repositorio` si existe).
 	- Índice interactivo de headings H2 del contenido, igual que en posts normales.
+	- Soporte para índices largos mediante scroll interno en el panel lateral.
+- El índice ya no se recorta artificialmente; se listan todos los H2 detectados del contenido.
+- Al comenzar la lectura y rebasar el primer H2:
+	- La ficha lateral se contrae para priorizar el índice.
+	- La barra sticky superior muestra una versión resumida de la ficha del proyecto.
+- Los enlaces de la ficha usan iconografía contextual y, para repositorios de GitHub, se formatean como `owner/repo.git`.
 - Sección final de relacionados dividida en dos columnas:
 	- `Más publicaciones`
 	- `Otros proyectos`

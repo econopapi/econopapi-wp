@@ -256,6 +256,75 @@ function econopapi_get_project_url_label( $url ) {
 }
 
 /**
+ * Returns formatted display data for project-related URLs.
+ *
+ * @param string $url URL to analyze.
+ * @param string $context Display context: project or repo.
+ * @return array<string, string>
+ */
+function econopapi_get_project_link_display_data( $url, $context = 'project' ) {
+	$url     = trim( (string) $url );
+	$context = 'repo' === $context ? 'repo' : 'project';
+
+	$data = array(
+		'label' => '',
+		'icon'  => 'project',
+	);
+
+	if ( '' === $url ) {
+		return $data;
+	}
+
+	$host = wp_parse_url( $url, PHP_URL_HOST );
+	$path = wp_parse_url( $url, PHP_URL_PATH );
+	$host = is_string( $host ) ? preg_replace( '/^www\./', '', $host ) : '';
+	$path = is_string( $path ) ? trim( rawurldecode( $path ), '/' ) : '';
+
+	if ( 'repo' === $context ) {
+		$data['icon'] = 'repo';
+
+		if ( is_string( $host ) && false !== stripos( $host, 'github.com' ) && '' !== $path ) {
+			$path_segments = array_values( array_filter( explode( '/', $path ) ) );
+
+			if ( count( $path_segments ) >= 2 ) {
+				$repository = $path_segments[0] . '/' . preg_replace( '/\.git$/i', '', $path_segments[1] ) . '.git';
+				$data['label'] = $repository;
+
+				return $data;
+			}
+		}
+
+		if ( '' !== $path ) {
+			$data['label'] = ( '' !== $host ? $host . '/' : '' ) . $path;
+		} else {
+			$data['label'] = '' !== $host ? $host : $url;
+		}
+
+		return $data;
+	}
+
+	$data['label'] = '' !== $host ? $host : $url;
+
+	return $data;
+}
+
+/**
+ * Returns inline SVG icon markup for project metadata links.
+ *
+ * @param string $icon Icon slug.
+ * @return string
+ */
+function econopapi_get_project_meta_icon_svg( $icon ) {
+    if ( 'repo' === $icon ) {
+        // Git logo oficial (simple-icons)
+        return '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.546 10.93L13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 1 1-1.1 1.059l-2.48-2.48v6.512a1.84 1.84 0 1 1-1.512-.036V9.003a1.839 1.839 0 0 1-.999-2.417L7.614 3.884.45 11.05a1.55 1.55 0 0 0 0 2.188l10.48 10.478a1.55 1.55 0 0 0 2.187 0l10.43-10.428a1.55 1.55 0 0 0 0-2.187" fill="currentColor"/></svg>';
+    }
+
+    // Globe / web (Remix Icons - ri-global-line)
+    return '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-2.29-2.333A17.9 17.9 0 0 1 8.027 13H4.062a8.008 8.008 0 0 0 5.648 6.667zM10.03 13c.151 2.439.848 4.73 1.97 6.752A15.905 15.905 0 0 0 13.97 13h-3.94zm9.908 0h-3.965a17.9 17.9 0 0 1-1.683 6.667A8.008 8.008 0 0 0 19.938 13zM4.062 11h3.965A17.9 17.9 0 0 1 9.71 4.333 8.008 8.008 0 0 0 4.062 11zm5.969 0h3.938A15.905 15.905 0 0 0 12 4.248 15.905 15.905 0 0 0 10.031 11zm4.259-6.667A17.9 17.9 0 0 1 15.973 11h3.965a8.008 8.008 0 0 0-5.648-6.667z" fill="currentColor"/></svg>';
+}
+
+/**
  * Builds a related posts query using shared tags when available.
  *
  * @param int    $post_id          Current project ID.

@@ -115,7 +115,7 @@ function econopapi_single_content_add_heading_ids( $content ) {
 		$content
 	);
 
-	econopapi_set_single_outline( $post_id, array_slice( $outline, 0, 8 ) );
+	econopapi_set_single_outline( $post_id, $outline );
 
 	return is_string( $updated_content ) ? $updated_content : $content;
 }
