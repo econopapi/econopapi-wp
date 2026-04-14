@@ -551,6 +551,7 @@ body[data-theme="dark"] {
 .eco-project-action:focus-visible {
 	transform: translateY(-1px);
 	border-color: color-mix(in srgb, var(--eco-sg-accent) 45%, var(--eco-sg-border));
+
 }
 
 .eco-project-action--primary {
@@ -559,8 +560,20 @@ body[data-theme="dark"] {
 	color: #fff;
 }
 
+.eco-project-action--primary:hover,
+.eco-project-action--primary:focus-visible {
+	background: #6a62ee;
+	color: #ffffff;
+}
+
 .eco-project-action--secondary {
 	background: color-mix(in srgb, var(--eco-sg-surface) 84%, var(--eco-sg-accent) 16%);
+	color: var(--eco-sg-text);
+}
+
+.eco-project-action--secondary:hover,
+.eco-project-action--secondary:focus-visible {
+	background: rgba(95, 88, 216, 0.08);
 	color: var(--eco-sg-text);
 }
 
