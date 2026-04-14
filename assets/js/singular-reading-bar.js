@@ -21,8 +21,11 @@
 
 		function updateOffsets() {
 			var headerHeight = header.offsetHeight;
+			var readingBarHeight = readingBar.offsetHeight;
 			var computedOffset = Math.max( 0, headerHeight - stickyOffsetAdjustment );
 			document.documentElement.style.setProperty( '--eco-header-offset', computedOffset + 'px' );
+			document.documentElement.style.setProperty( '--eco-reading-bar-size', readingBarHeight + 'px' );
+			document.documentElement.style.setProperty( '--eco-anchor-offset', computedOffset + readingBarHeight + 18 + 'px' );
 		}
 
 		function updateBarVisibility() {

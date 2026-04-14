@@ -210,6 +210,7 @@ Se implementaron plantillas personalizadas para contenido singular con soporte v
 - Sidebar (desktop) con:
 	- "En este post" (headings H2 detectados del contenido).
 	- Títulos clicables con navegación por ancla.
+	- Offset dinámico de anclas para que los headings no queden ocultos debajo del header sticky ni de la barra de lectura.
 	- Resaltado automático del título activo conforme al scroll.
 	- Enlaces opcionales de Repo y Demo por meta fields.
 - Barra sticky de contexto al hacer scroll (título del post) con progreso de lectura como subrayado morado.
