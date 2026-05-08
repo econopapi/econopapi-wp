@@ -294,6 +294,30 @@ Se agregó una plantilla dedicada para el archivo de blog, siguiendo el diseño 
 - Cada card incluye categoría principal, título, extracto y meta de fecha + lectura estimada.
 - Botón "Cargar más publicaciones" enlaza a la siguiente página del loop principal cuando existe.
 
+## Front Page: sección combinada de contenido reciente
+
+La portada fallback ahora incluye una sección editorial combinada para mejorar visibilidad de contenido y portafolio sin romper el estilo actual.
+
+### Cambios
+
+- `template-parts/front-page/sections/latest-posts.php`
+	- Evolucionó de "solo publicaciones" a un layout de dos columnas:
+		- `Últimas publicaciones`
+		- `Proyectos recientes`
+	- Se agregaron queries separadas para `post` y `project` (3 elementos cada una).
+	- En proyectos se muestran título, estado (si existe) y extracto.
+
+- `assets/css/front-page.css`
+	- Se agregó `eco-latest-grid` para layout en dos columnas en desktop.
+	- En `max-width: 900px` colapsa a una columna para mejor lectura en tablet/mobile.
+	- Se añadieron estilos para cards y badges de estado de proyectos, reutilizando el lenguaje visual existente (bordes, acentos, superficies y variables del tema).
+
+### Resultado visual
+
+- Desktop: módulo balanceado tipo "Publicaciones + Proyectos" lado a lado.
+- Mobile: flujo vertical con bloques claros y legibles.
+- Se mantiene accesibilidad semántica con headings y listas por sección.
+
 ### Carga incremental por AJAX
 
 - El botón "Cargar más publicaciones" ahora usa AJAX para agregar más cards sin recargar la página.

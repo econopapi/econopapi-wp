@@ -272,6 +272,91 @@ body[data-theme="light"] {
 	color: var(--eco-text-muted);
 }
 
+.econopapi-front-page .eco-latest-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 1.25rem;
+	margin-top: 0.95rem;
+}
+
+.econopapi-front-page .eco-latest-column {
+	padding: 1rem;
+	border: 1px solid var(--eco-border);
+	border-radius: 0.9rem;
+	background: color-mix(in srgb, var(--eco-surface) 90%, var(--eco-bg));
+}
+
+.econopapi-front-page .eco-subsection-title {
+	margin: 0;
+	font-size: 0.98rem;
+	font-weight: 700;
+	color: var(--eco-text);
+	letter-spacing: 0.02em;
+}
+
+.econopapi-front-page .eco-latest-column .eco-post-list,
+.econopapi-front-page .eco-latest-column .eco-project-list {
+	margin-top: 0.78rem;
+}
+
+.econopapi-front-page .eco-project-list {
+	margin: 1.1rem 0 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: 0.72rem;
+}
+
+.econopapi-front-page .eco-project-item {
+	padding: 0.9rem;
+	border: 1px solid var(--eco-border);
+	border-radius: 0.72rem;
+	background: var(--eco-surface);
+}
+
+.econopapi-front-page .eco-project-main {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.6rem;
+}
+
+.econopapi-front-page .eco-project-title {
+	margin: 0;
+	font-size: 1.04rem;
+	font-weight: 650;
+	line-height: 1.3;
+}
+
+.econopapi-front-page .eco-project-title a {
+	color: var(--eco-text);
+	text-decoration: none;
+}
+
+.econopapi-front-page .eco-project-title a:hover,
+.econopapi-front-page .eco-project-title a:focus-visible {
+	color: var(--eco-accent);
+}
+
+.econopapi-front-page .eco-project-status {
+	display: inline-flex;
+	padding: 0.2rem 0.62rem;
+	font-size: 0.78rem;
+	font-weight: 600;
+	line-height: 1.2;
+	white-space: nowrap;
+	color: var(--eco-accent);
+	background: var(--eco-accent-soft);
+	border-radius: 999px;
+}
+
+.econopapi-front-page .eco-project-excerpt {
+	margin: 0.58rem 0 0;
+	font-size: 0.95rem;
+	line-height: 1.45;
+	color: var(--eco-text-muted);
+}
+
 @media (max-width: 900px) {
 	.wp-block-econopapi-hero .eco-hero {
 		padding: 2.6rem 0;
@@ -294,6 +379,10 @@ body[data-theme="light"] {
 		align-items: flex-start;
 		gap: 0.55rem;
 	}
+
+	.econopapi-front-page .eco-latest-grid {
+		grid-template-columns: 1fr;
+	}
 }
 
 @media (max-width: 640px) {
@@ -311,6 +400,16 @@ body[data-theme="light"] {
 	}
 
 	.econopapi-front-page .eco-post-item {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.econopapi-front-page .eco-latest-column,
+	.econopapi-front-page .eco-project-item {
+		padding: 0.85rem;
+	}
+
+	.econopapi-front-page .eco-project-main {
 		align-items: flex-start;
 		flex-direction: column;
 	}
