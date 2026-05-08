@@ -176,6 +176,46 @@ El footer utiliza un sistema de variables CSS similar al resto del tema:
 En modo oscuro, estas variables cambian automáticamente a valores más oscuros con mejor contraste.
 - Se aplican atributos en `body` (`data-theme="light|dark"`) para que los estilos respondan inmediatamente.
 
+## Schema Markup (JSON-LD)
+
+Se implementó un módulo de datos estructurados del tema para reforzar reconocimiento semántico en motores de búsqueda.
+
+### Implementación actual
+
+- `includes/schema.php`: módulo dedicado para datos estructurados.
+- `functions.php`: carga modular del archivo de schema como parte del bootstrap del tema.
+
+### Schemas activos
+
+1. `Person` (Schema.org)
+- Hook: `wp_head`
+- Condición: sólo se imprime en `is_front_page()`
+- Datos incluidos: nombre, URL del sitio, imagen de perfil, roles (`jobTitle`) y perfiles sociales (`sameAs`).
+
+2. `Article` (Schema.org)
+- Hook: `wp_head`
+- Condición: sólo se imprime en `is_singular( 'post' )`
+- Datos incluidos: `headline`, `datePublished`, `dateModified`, `author`, `publisher`, `mainEntityOfPage` e `image` (si existe imagen destacada).
+
+3. `BreadcrumbList` (Schema.org)
+- Hook: `wp_head`
+- Condición: se imprime en contenido singular y en archive de proyectos (`is_post_type_archive( 'project' )`).
+- Comportamiento:
+	- Post individual: `Inicio > Blog > Post`
+	- Página individual: `Inicio > ...ancestros... > Página actual`
+	- Proyecto individual: `Inicio > Proyectos > Proyecto`
+	- Archive de proyectos: `Inicio > Proyectos`
+
+### Extensibilidad
+
+Los payloads se pueden modificar sin tocar el core del módulo mediante los filtros:
+
+- `econopapi_person_schema_data`
+- `econopapi_article_schema_data`
+- `econopapi_breadcrumb_schema_data`
+
+Esto permite ajustar o enriquecer el schema en child customizations o módulos futuros sin romper el enfoque modular del tema.
+
 ## Override del header
 
 Se implementó override real del header de Astra para respetar maquetado/comportamiento de los mocks:
