@@ -159,6 +159,11 @@ add_action( 'wp_head', 'econopapi_print_article_schema', 20 );
  * @return array<string, mixed>
  */
 function econopapi_get_breadcrumb_schema_data() {
+    if (is_front_page() || is_home()) {
+        return array();
+    }
+
+
 	if ( ! is_singular() && ! is_post_type_archive( 'project' ) ) {
 		return array();
 	}
