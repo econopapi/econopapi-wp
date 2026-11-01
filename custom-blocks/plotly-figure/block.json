@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 2,
+  "name": "econopapi/plotly-figure",
+  "version": "1.0.0",
+  "title": "Econopapi Plotly Figure",
+  "category": "media",
+  "icon": "chart-bar",
+  "description": "Figura interactiva de Plotly con datos, fuente y tabla accesible.",
+  "textdomain": "econopapi-wp",
+  "keywords": ["plotly", "gráfico", "datos", "figura", "econopapi"],
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": ["wide", "full"]
+  },
+  "attributes": {
+    "sourceId": { "type": "number", "default": 0 },
+    "sourceName": { "type": "string", "default": "" },
+    "kicker": { "type": "string", "default": "" },
+    "title": { "type": "string", "default": "" },
+    "description": { "type": "string", "default": "" },
+    "alt": { "type": "string", "default": "" },
+    "unit": { "type": "string", "default": "" },
+    "sourceLabel": { "type": "string", "default": "" },
+    "sourceUrl": { "type": "string", "default": "" },
+    "methodologyLabel": { "type": "string", "default": "" },
+    "methodologyUrl": { "type": "string", "default": "" },
+    "note": { "type": "string", "default": "" },
+    "height": { "type": "number", "default": 480 },
+    "tableOpen": { "type": "boolean", "default": false },
+    "allowDownload": { "type": "boolean", "default": true }
+  },
+  "editorScript": "file:./index.js",
+  "script": "file:./view.js",
+  "style": "file:./style.css",
+  "editorStyle": "file:./editor.css",
+  "render": "file:./render.php"
+}

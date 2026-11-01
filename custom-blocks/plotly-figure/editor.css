@@ -1,0 +1,24 @@
+.eco-plotly-editor {
+	min-width: 0;
+}
+
+.eco-plotly-editor__filename {
+	margin: 0.75rem 0 0.25rem;
+	font-family: monospace;
+	font-size: 12px;
+	overflow-wrap: anywhere;
+}
+
+.eco-plotly-editor__help {
+	color: #757575;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.eco-plotly-editor .components-button.is-destructive {
+	padding-left: 0;
+}
+
+.eco-plotly-editor .eco-plotly {
+	margin-block: 0;
+}

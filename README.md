@@ -392,6 +392,20 @@ En `includes/projects.php` se agregaron helpers para:
 - Formatear hosts/labels de URLs.
 - Obtener queries de contenido relacionado para posts y proyectos.
 
+## Bloque Plotly Figure
+
+El bloque dinámico `econopapi/plotly-figure` integra figuras interactivas de Plotly directamente en el tema, sin datos precargados ni plugins ad-hoc.
+
+- Implementación: `custom-blocks/plotly-figure/`.
+- Registro: `includes/blocks.php`.
+- Validación de manifiestos y soporte de subida JSON: `includes/plotly-figure.php`.
+- Entrada: un JSON versionado generado desde Python con figura, tabla accesible y procedencia.
+- Render PHP de fuente, metodología, análisis y tabla; Plotly se reserva para la visualización interactiva.
+- Plotly.js 2.35.2 se sirve localmente y se carga únicamente cuando el bloque está presente.
+- Los estilos siguen `body[data-theme="light|dark"]` y el renderer se actualiza al cambiar de modo.
+
+El contrato de entrada, un ejemplo completo y el exportador de referencia para Python están documentados en `custom-blocks/plotly-figure/README.md`.
+
 ## Nota para siguientes iteraciones
 
 - Si se desea toggle manual de tema (switch claro/oscuro), se puede agregar en una siguiente etapa con almacenamiento de preferencia en `localStorage` y sincronización de clase en `body`.

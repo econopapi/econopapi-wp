@@ -1,0 +1,301 @@
+.wp-block-econopapi-plotly-figure {
+	--eco-plotly-bg: #f4f4f8;
+	--eco-plotly-surface: #ffffff;
+	--eco-plotly-text: #1f2230;
+	--eco-plotly-muted: #676d82;
+	--eco-plotly-border: #e3e6ef;
+	--eco-plotly-accent: #5f58d8;
+	--eco-plotly-soft: #ebe9ff;
+	--eco-plotly-grid: rgba(31, 34, 48, 0.08);
+	--eco-plotly-series-1: #5f58d8;
+	--eco-plotly-series-2: #0f4ea5;
+	--eco-plotly-series-3: #956100;
+	--eco-plotly-series-4: #0f7d56;
+	--eco-plotly-series-5: #b34b7d;
+	--eco-plotly-series-6: #676d82;
+	--eco-plotly-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+	.wp-block-econopapi-plotly-figure {
+		--eco-plotly-bg: #090b14;
+		--eco-plotly-surface: #0b0d17;
+		--eco-plotly-text: #e8ebf7;
+		--eco-plotly-muted: #9ea5bf;
+		--eco-plotly-border: #232940;
+		--eco-plotly-accent: #857cff;
+		--eco-plotly-soft: #28204f;
+		--eco-plotly-grid: rgba(232, 235, 251, 0.09);
+		--eco-plotly-series-1: #857cff;
+		--eco-plotly-series-2: #55d6ff;
+		--eco-plotly-series-3: #ffd272;
+		--eco-plotly-series-4: #6be1b2;
+		--eco-plotly-series-5: #ff8ac2;
+		--eco-plotly-series-6: #9ca4bf;
+		color-scheme: dark;
+	}
+}
+
+body[data-theme="light"] .wp-block-econopapi-plotly-figure {
+	--eco-plotly-bg: #f4f4f8;
+	--eco-plotly-surface: #ffffff;
+	--eco-plotly-text: #1f2230;
+	--eco-plotly-muted: #676d82;
+	--eco-plotly-border: #e3e6ef;
+	--eco-plotly-accent: #5f58d8;
+	--eco-plotly-soft: #ebe9ff;
+	--eco-plotly-grid: rgba(31, 34, 48, 0.08);
+	--eco-plotly-series-1: #5f58d8;
+	--eco-plotly-series-2: #0f4ea5;
+	--eco-plotly-series-3: #956100;
+	--eco-plotly-series-4: #0f7d56;
+	--eco-plotly-series-5: #b34b7d;
+	--eco-plotly-series-6: #676d82;
+	color-scheme: light;
+}
+
+body.theme-dark .wp-block-econopapi-plotly-figure,
+body[data-theme="dark"] .wp-block-econopapi-plotly-figure {
+	--eco-plotly-bg: #090b14;
+	--eco-plotly-surface: #0b0d17;
+	--eco-plotly-text: #e8ebf7;
+	--eco-plotly-muted: #9ea5bf;
+	--eco-plotly-border: #232940;
+	--eco-plotly-accent: #857cff;
+	--eco-plotly-soft: #28204f;
+	--eco-plotly-grid: rgba(232, 235, 251, 0.09);
+	--eco-plotly-series-1: #857cff;
+	--eco-plotly-series-2: #55d6ff;
+	--eco-plotly-series-3: #ffd272;
+	--eco-plotly-series-4: #6be1b2;
+	--eco-plotly-series-5: #ff8ac2;
+	--eco-plotly-series-6: #9ca4bf;
+	color-scheme: dark;
+}
+
+.eco-plotly {
+	display: block;
+	box-sizing: border-box;
+	max-width: 1080px;
+	margin: 2rem auto;
+	padding: 1.25rem;
+	border: 1px solid var(--eco-plotly-border);
+	border-radius: 1rem;
+	background: var(--eco-plotly-bg);
+	color: var(--eco-plotly-text);
+	font-family: var(--eco-plotly-font-family);
+	font-size: 0.9rem;
+	line-height: 1.55;
+}
+
+.eco-plotly *,
+.eco-plotly *::before,
+.eco-plotly *::after {
+	box-sizing: border-box;
+}
+
+.eco-plotly__payload {
+	display: none;
+}
+
+.eco-plotly__header {
+	margin-bottom: 0.8rem;
+}
+
+.eco-plotly__kicker {
+	margin: 0 0 0.25rem;
+	color: var(--eco-plotly-accent);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+}
+
+.eco-plotly__title {
+	margin: 0;
+	color: var(--eco-plotly-text);
+	font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+	font-weight: 700;
+	letter-spacing: -0.025em;
+	line-height: 1.25;
+}
+
+.eco-plotly__title span {
+	color: var(--eco-plotly-accent);
+}
+
+.eco-plotly__description {
+	margin: 0.4rem 0 0;
+	color: var(--eco-plotly-muted);
+	font-size: 0.84rem;
+	line-height: 1.55;
+	white-space: pre-line;
+}
+
+.eco-plotly__surface {
+	overflow: hidden;
+	padding: 0.5rem 0.25rem 0.15rem;
+	border: 1px solid var(--eco-plotly-border);
+	border-radius: 0.5rem;
+	background: var(--eco-plotly-surface);
+}
+
+.eco-plotly__chart {
+	width: 100%;
+	min-height: 240px;
+}
+
+.eco-plotly__chart > div {
+	max-width: 100%;
+}
+
+.eco-plotly__notice,
+.eco-plotly__error {
+	margin: 0.75rem 0 0;
+	padding: 0.7rem;
+	border: 1px dashed var(--eco-plotly-border);
+	border-radius: 0.4rem;
+	color: var(--eco-plotly-muted);
+	font-size: 0.8rem;
+}
+
+.eco-plotly__error {
+	border-color: var(--eco-plotly-series-3);
+}
+
+.eco-plotly__caption {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	margin-top: 0.8rem;
+	padding-top: 0.65rem;
+	border-top: 1px solid var(--eco-plotly-border);
+	color: var(--eco-plotly-muted);
+	font-size: 0.75rem;
+	line-height: 1.55;
+}
+
+.eco-plotly__caption strong {
+	color: var(--eco-plotly-text);
+}
+
+.eco-plotly__caption a,
+.eco-plotly__download {
+	color: var(--eco-plotly-accent);
+	text-decoration: none;
+	text-underline-offset: 0.15em;
+	overflow-wrap: anywhere;
+}
+
+.eco-plotly__caption a:hover,
+.eco-plotly__caption a:focus-visible,
+.eco-plotly__download:hover,
+.eco-plotly__download:focus-visible {
+	text-decoration: underline;
+}
+
+.eco-plotly__analysis,
+.eco-plotly__analysis code {
+	overflow-wrap: anywhere;
+	word-break: break-word;
+}
+
+.eco-plotly__note {
+	white-space: pre-line;
+}
+
+.eco-plotly__data {
+	margin-top: 0.75rem;
+	color: var(--eco-plotly-muted);
+	font-size: 0.8rem;
+}
+
+.eco-plotly__data summary {
+	width: fit-content;
+	cursor: pointer;
+	color: var(--eco-plotly-muted);
+	font-weight: 600;
+}
+
+.eco-plotly__data summary:focus-visible,
+.eco-plotly__table-scroll:focus-visible {
+	outline: 2px solid var(--eco-plotly-accent);
+	outline-offset: 3px;
+}
+
+.eco-plotly__table-scroll {
+	overflow-x: auto;
+	margin-top: 0.55rem;
+	border: 1px solid var(--eco-plotly-border);
+	border-radius: 0.4rem;
+	background: var(--eco-plotly-surface);
+}
+
+.wp-block-econopapi-plotly-figure .eco-plotly__data table {
+	display: table;
+	width: 100%;
+	border-collapse: collapse;
+	font-variant-numeric: tabular-nums;
+}
+
+.eco-plotly__data caption {
+	padding: 0.55rem 0.65rem;
+	color: var(--eco-plotly-muted);
+	font-size: 0.75rem;
+	text-align: left;
+}
+
+.eco-plotly__data th,
+.eco-plotly__data td {
+	padding: 0.45rem 0.6rem;
+	border-top: 1px solid var(--eco-plotly-border);
+	border-right: 1px solid var(--eco-plotly-border);
+	text-align: left;
+	vertical-align: top;
+}
+
+.eco-plotly__data th:last-child,
+.eco-plotly__data td:last-child {
+	border-right: 0;
+}
+
+.eco-plotly__data th {
+	background: var(--eco-plotly-soft);
+	color: var(--eco-plotly-text);
+	font-size: 0.72rem;
+	font-weight: 650;
+}
+
+.eco-plotly__column-unit {
+	display: block;
+	color: var(--eco-plotly-muted);
+	font-size: 0.68rem;
+	font-weight: 400;
+}
+
+.eco-plotly__download {
+	display: inline-block;
+	margin-top: 0.55rem;
+}
+
+.eco-plotly--empty {
+	padding: 1rem;
+	color: var(--eco-plotly-muted);
+}
+
+.eco-plotly--empty p {
+	margin: 0;
+}
+
+@media (max-width: 640px) {
+	.eco-plotly {
+		margin: 1.5rem auto;
+		padding: 0.8rem;
+		border-radius: 0.75rem;
+	}
+
+	.eco-plotly__surface {
+		padding-inline: 0;
+	}
+}
