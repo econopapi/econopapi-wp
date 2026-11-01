@@ -271,6 +271,20 @@ body[data-theme="dark"] {
 	font-family: Menlo, Consolas, Monaco, monospace;
 }
 
+.eco-single-content p code,
+.eco-page-content p code {
+	padding: 0.10em 0.20em;
+	border: 1px solid color-mix(in srgb, var(--eco-sg-accent) 24%, var(--eco-sg-border));
+	border-radius: 0.35rem;
+	background: color-mix(in srgb, var(--eco-sg-accent) 9%, var(--eco-sg-surface-alt));
+	color: color-mix(in srgb, var(--eco-sg-accent) 70%, var(--eco-sg-text));
+	font-size: 0.88em;
+	font-weight: 600;
+	overflow-wrap: anywhere;
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
 .eco-single-content pre code,
 .eco-page-content pre code {
 	white-space: pre;
